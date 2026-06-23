@@ -172,9 +172,6 @@ p {
   display: block;
 }
 
-.headline-line:first-child {
-  white-space: nowrap;
-}
 
 .subtitle {
   max-width: 550px;
@@ -487,9 +484,6 @@ p {
     font-size: clamp(1.48rem, 7.2vw, 2.2rem);
   }
 
-  .headline-line:first-child {
-    white-space: normal;
-  }
 
   .actions {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
