@@ -1,0 +1,557 @@
+:root {
+  color: #143321;
+  background: #fff7c8;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --green: #099447;
+  --green-dark: #103a27;
+  --yellow: #ffdc3c;
+  --blue: #1268b3;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+button,
+a {
+  font: inherit;
+  letter-spacing: 0;
+}
+
+body {
+  min-width: 320px;
+}
+
+.app-shell {
+  position: relative;
+  display: grid;
+  width: 100vw;
+  height: 100svh;
+  min-height: 100vh;
+  place-items: center;
+  overflow: hidden;
+  padding: clamp(14px, 3vw, 40px);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(0, 155, 58, 0.18), transparent 28vw),
+    radial-gradient(circle at 82% 12%, rgba(18, 104, 179, 0.18), transparent 25vw),
+    linear-gradient(135deg, #fffbe0 0%, #fff1a7 46%, #f9fbff 100%);
+}
+
+.ambient {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(18px);
+  opacity: 0.52;
+  pointer-events: none;
+}
+
+.ambient--green {
+  width: min(36vw, 420px);
+  aspect-ratio: 1;
+  left: -8vw;
+  bottom: 7vh;
+  background: rgba(0, 155, 58, 0.22);
+}
+
+.ambient--blue {
+  width: min(32vw, 360px);
+  aspect-ratio: 1;
+  right: -5vw;
+  top: 9vh;
+  background: rgba(18, 104, 179, 0.2);
+}
+
+.ambient--white {
+  width: min(26vw, 280px);
+  aspect-ratio: 1;
+  right: 15vw;
+  bottom: -11vh;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.invite-card {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: min(94vw, 1080px);
+  max-height: calc(100svh - 32px);
+  gap: clamp(18px, 3vh, 26px);
+  justify-items: center;
+  padding: clamp(22px, 5vmin, 48px);
+  overflow: visible;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 22px 70px rgba(15, 64, 39, 0.17), inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(18px);
+  transform-origin: center;
+  animation: card-in 620ms cubic-bezier(0.2, 0.82, 0.2, 1) both;
+}
+
+.invite-card--leaving {
+  pointer-events: none;
+  animation: card-out 520ms ease both;
+}
+
+.matchup {
+  display: grid;
+  grid-template-columns: minmax(86px, 178px) auto minmax(86px, 178px);
+  align-items: center;
+  width: min(100%, 490px);
+  gap: clamp(10px, 2.5vw, 22px);
+}
+
+.flag {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(18, 68, 42, 0.2);
+}
+
+.versus {
+  display: grid;
+  width: clamp(38px, 7vw, 56px);
+  aspect-ratio: 1;
+  place-items: center;
+  color: var(--green-dark);
+  font-size: clamp(1.15rem, 3vw, 1.65rem);
+  font-weight: 900;
+  border: 1px solid rgba(0, 155, 58, 0.16);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffffff, #fff1a2);
+  box-shadow: 0 8px 18px rgba(19, 63, 36, 0.13);
+}
+
+.copy {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #0a7d3d;
+  font-size: clamp(0.68rem, 1.8vw, 0.78rem);
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+.copy h1 {
+  max-width: 980px;
+  color: var(--green-dark);
+  font-size: clamp(1.55rem, 3vw, 2.35rem);
+  font-weight: 900;
+  line-height: 1.02;
+}
+
+.headline-line {
+  display: block;
+}
+
+.headline-line:first-child {
+  white-space: nowrap;
+}
+
+.subtitle {
+  max-width: 550px;
+  color: rgba(20, 51, 33, 0.73);
+  font-size: clamp(0.98rem, 2.1vw, 1.18rem);
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.actions {
+  display: grid;
+  position: relative;
+  grid-template-columns: 132px 132px;
+  justify-content: center;
+  width: min(100%, 278px);
+  gap: 14px;
+}
+
+.choice-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 132px;
+  min-height: 54px;
+  gap: 8px;
+  padding: 13px 18px;
+  cursor: pointer;
+  user-select: none;
+  border: 0;
+  border-radius: 8px;
+  font-size: clamp(0.98rem, 2vw, 1.04rem);
+  font-weight: 900;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 14px 24px rgba(15, 63, 36, 0.18);
+  transition:
+    transform 170ms ease,
+    filter 170ms ease,
+    box-shadow 170ms ease,
+    left 210ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    top 210ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  touch-action: manipulation;
+}
+
+.choice-button img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.choice-button--yes {
+  grid-column: 2;
+  color: #133a25;
+  background: linear-gradient(135deg, #ffe066, #ffbe2d);
+}
+
+.choice-button--yes:hover,
+.choice-button--yes:focus-visible {
+  filter: brightness(1.04);
+  outline: none;
+  transform: translateY(-2px) scale(1.035);
+  box-shadow: 0 18px 30px rgba(159, 116, 0, 0.24);
+}
+
+.choice-button--no {
+  grid-column: 1;
+  color: #164168;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(18, 104, 179, 0.16);
+}
+
+.choice-button--no.choice-button--floating {
+  position: fixed;
+  z-index: 7;
+  animation: nope-wiggle 230ms ease;
+}
+
+.celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.fireworks-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.celebration h2 {
+  position: relative;
+  color: #ffffff;
+  text-align: center;
+  font-size: clamp(3.2rem, 14vw, 9.6rem);
+  font-weight: 1000;
+  line-height: 0.9;
+  text-shadow:
+    0 4px 0 #0a7d3d,
+    0 10px 34px rgba(0, 46, 24, 0.55);
+  animation: hexa-pop 2800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.football-rain {
+  position: absolute;
+  inset: 0;
+}
+
+.football-rain span {
+  position: absolute;
+  bottom: -60px;
+  left: calc(4vw + (var(--ball-index) * 6vw));
+  font-size: clamp(1.5rem, 4vw, 3.2rem);
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.2));
+  animation: ball-float 2600ms ease-in-out infinite;
+  animation-delay: calc(var(--ball-index) * -150ms);
+}
+
+.football-rain span:nth-child(2n) {
+  left: calc(88vw - (var(--ball-index) * 4.8vw));
+}
+
+.football-rain span:nth-child(3n) {
+  animation-duration: 3100ms;
+}
+
+.final-screen {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  width: min(90vw, 760px);
+  gap: clamp(22px, 4vh, 34px);
+  justify-items: center;
+  text-align: center;
+  animation: final-in 760ms cubic-bezier(0.2, 0.82, 0.2, 1) both;
+}
+
+.final-copy {
+  display: grid;
+  gap: 12px;
+}
+
+.final-copy h2 {
+  color: var(--green-dark);
+  font-size: clamp(2.5rem, 9vw, 6rem);
+  font-weight: 1000;
+  line-height: 0.94;
+  text-wrap: balance;
+}
+
+.final-copy p:last-child {
+  color: rgba(20, 51, 33, 0.76);
+  font-size: clamp(1.05rem, 2.8vw, 1.38rem);
+  font-weight: 700;
+}
+
+.final-emojis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(72px, 1fr));
+  width: min(100%, 330px);
+  gap: clamp(8px, 2vw, 16px);
+}
+
+.final-emojis span {
+  display: grid;
+  aspect-ratio: 1;
+  place-items: center;
+  font-size: clamp(1.6rem, 5vw, 2.9rem);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 12px 22px rgba(10, 73, 42, 0.11);
+  animation: emoji-breathe 1800ms ease-in-out infinite;
+}
+
+.final-emojis span:nth-child(2n) {
+  animation-delay: 160ms;
+}
+
+.final-emojis span:nth-child(3n) {
+  animation-delay: 320ms;
+}
+
+.whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58px;
+  padding: 16px 24px;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0aa34d, #08773d);
+  box-shadow: 0 18px 34px rgba(10, 124, 61, 0.28);
+  font-size: clamp(1rem, 2.4vw, 1.14rem);
+  font-weight: 900;
+  transition:
+    transform 170ms ease,
+    filter 170ms ease,
+    box-shadow 170ms ease;
+}
+
+.whatsapp-button:hover,
+.whatsapp-button:focus-visible {
+  filter: brightness(1.05);
+  outline: none;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 22px 40px rgba(10, 124, 61, 0.34);
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+}
+
+@keyframes card-out {
+  to {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+  }
+}
+
+@keyframes nope-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  40% {
+    transform: rotate(-4deg) scale(1.04);
+  }
+
+  70% {
+    transform: rotate(4deg) scale(1.03);
+  }
+}
+
+@keyframes hexa-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.7) rotate(-2deg);
+  }
+
+  18%,
+  75% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-16px) scale(1.06);
+  }
+}
+
+@keyframes ball-float {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  to {
+    transform: translate3d(0, -112vh, 0) rotate(420deg);
+    opacity: 0;
+  }
+}
+
+@keyframes final-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+}
+
+@keyframes emoji-breathe {
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 680px) {
+  .app-shell {
+    padding: 12px;
+  }
+
+  .invite-card {
+    width: min(94vw, 500px);
+    gap: 16px;
+    padding: 22px 16px;
+  }
+
+  .matchup {
+    grid-template-columns: minmax(84px, 1fr) 38px minmax(84px, 1fr);
+    gap: 8px;
+  }
+
+  .copy h1 {
+    font-size: clamp(1.48rem, 7.2vw, 2.2rem);
+  }
+
+  .headline-line:first-child {
+    white-space: normal;
+  }
+
+  .actions {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    width: min(100%, 350px);
+    gap: 10px;
+  }
+
+  .choice-button {
+    min-width: 0;
+    width: 100%;
+    padding-inline: 12px;
+  }
+
+  .choice-button--no.choice-button--floating {
+    width: auto;
+    min-width: 122px;
+  }
+
+  .final-emojis {
+    grid-template-columns: repeat(3, minmax(52px, 1fr));
+    width: min(100%, 310px);
+  }
+
+  .whatsapp-button {
+    width: min(100%, 340px);
+  }
+}
+
+@media (max-height: 620px) {
+  .invite-card {
+    gap: 12px;
+    padding-block: 16px;
+  }
+
+  .flag {
+    aspect-ratio: 16 / 9;
+  }
+
+  .copy {
+    gap: 7px;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .choice-button {
+    min-height: 48px;
+  }
+
+  .final-screen {
+    gap: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
