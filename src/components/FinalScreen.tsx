@@ -8,7 +8,7 @@ export function FinalScreen() {
       <div className="final-copy">
         <p className="eyebrow">Brasil x Escócia</p>
         <h2>Presença confirmada!</h2>
-        <p>Traga sua bebida alcoólica e muita felicidade!</p>
+        <p>Traga sua bebida alcoólica e muita alegria!</p>
       </div>
 
       <div className="final-emojis" aria-hidden="true">
