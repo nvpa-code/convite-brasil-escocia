@@ -27,8 +27,9 @@ export function InviteCard({ isLeaving, onConfirm }: InviteCardProps) {
       <div className="copy">
         <p className="eyebrow">Copa do Mundo FIFA 2026</p>
         <h1>
-          <span className="headline-line">Quarta a seleção entra em campo e a resenha é aqui em casa!</span>
-          <span className="headline-line headline-line--question">Bora?</span>
+            <span className="headline-line">Quarta a seleção entra em campo e a resenha é aqui em</span>
+            <span className="headline-line">e a resenha é aqui em casa!</span>
+            <span className="headline-line headline-line--question">Bora?</span>
         </h1>
         <p className="subtitle">Vai rolar churrasquin, pagodin e muito papo furado!</p>
       </div>
